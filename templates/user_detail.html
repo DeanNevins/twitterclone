@@ -1,0 +1,17 @@
+{% include 'navigation.html' %}
+<div class='nes-container is-rounded is-dark with-title'>
+    <h2 class='title'>{{ user }}</h2>
+    <h4>
+        Following: {{ following|length }}
+        <br>
+        Tweets: {{ tweets|length }}
+    </h4>
+    {% if request.user.id and user != request.user %}
+    {% if user in  current_user_following %}
+        <a class='nes-btn is-error' href='/{{user.username}}/unfollow/'>Unfollow</a>
+    {% else %}
+        <a class='nes-btn is-success' href='/{{user.username}}/follow/'>Follow</a>
+    {% endif %}
+    {% endif %}
+</div>
+{% include 'tweet_list.html' %}

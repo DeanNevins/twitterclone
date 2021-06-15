@@ -1,0 +1,9 @@
+{% include 'navigation.html' %}
+
+<div class='nes-container is-rounded is-dark with-title'>
+    <p class='title'>    
+        <a href='/{{tweet.poster.username}}'>{{ tweet.poster }}</a>
+        - {{ tweet.post_date }}
+    </p>
+    <h2>{{ tweet.tweet }}</h2>
+</div>

@@ -1,0 +1,10 @@
+{% for tweet in tweets %}
+    <div class="nes-container is-rounded with-title">
+        <p>
+            <a href='/{{tweet.poster.username}}'>{{ tweet.poster }}</a>
+            - <a href='/tweet/{{tweet.id}}/'>{{ tweet.post_date }}</a>
+            <br>
+            {{ tweet.tweet }}
+        </p>
+    </div>
+{% endfor %}

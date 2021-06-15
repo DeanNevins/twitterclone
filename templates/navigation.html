@@ -1,0 +1,76 @@
+{% load static %}
+<head>
+    <title>Twitter Clone</title>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/nes.css@latest/css/nes.min.css"  />
+    <link rel="stylesheet" href="{% static 'css/twitterclone.css/' %}" />
+</head>
+
+<div class="nes-container with-title">
+    <p class="title">
+        {% if request.user.username %}
+        Welcome, {{ request.user }}
+        {% endif %}
+    </p>
+    <i class="nes-icon twitter is-large"></i>
+    
+    <br>
+    {% if request.path == 'login' %}
+    
+    {% else %}
+    
+    {% endif %}
+    {% if request.path == '/' %}
+        <a class="nes-btn is-success" href="/">Home</a>
+    {% else %}
+        <a class="nes-btn is-primary" href="/">Home</a>
+    {% endif %}
+    
+    {% if request.user.username %}
+        {% if request.path == '/tweet/add/' %}
+            <a class="nes-btn is-success" href='/tweet/add/'>Tweet</a>
+        {% else %}
+            <a class="nes-btn is-primary" href='/tweet/add/'>Tweet</a>     
+        {% endif %}
+        
+        <!-- Retrieves what the url should be based on who the is the current request.user -->
+        {% url 'user_detail' request.user as current_url %}
+
+        {% if request.path == current_url %}
+                <a class="nes-btn is-success" href='/{{request.user.username}}/'>Profile</a>
+        {% else %}
+                <a class="nes-btn is-primary" href='/{{request.user.username}}/'>Profile</a>        
+        {% endif %}
+        
+        {% if request.path == '/notifications/' %}
+            <a class="nes-btn is-success" href='/notifications/'>Notifications</a>
+        {% else %}
+            <a class="nes-btn is-primary" href='/notifications/'>Notifications</a>
+        {% endif %}
+        
+    {% else %}
+        <a class="nes-btn is-disabled" >Tweet</a>
+        <a class="nes-btn is-disabled" >Profile</a>
+        <a class="nes-btn is-disabled" >Notifications</a>
+    {% endif %}
+    
+    
+    {% if request.path == '/login/' %}
+        <a class="nes-btn is-success" href='/login/'>Login</a>
+    {% else %}
+        <a class="nes-btn is-primary" href='/login/'>Login</a>   
+    {% endif %}
+
+    {% if request.path == '/signup/' %}
+        <a class="nes-btn is-success" href='/signup/'>Sign Up</a>
+    {% else %}
+        <a class="nes-btn is-primary" href='/signup/'>Sign Up</a> 
+    {% endif %}
+
+    {% if request.user.username %}
+        <a class="nes-btn is-primary" href='/logout/'>Logout</a>
+    {% else %}
+        <a class="nes-btn is-disabled" >Logout</a>
+    {% endif %}
+    
+</div>

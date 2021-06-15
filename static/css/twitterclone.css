@@ -1,0 +1,20 @@
+body {
+    margin: auto;
+    max-width: 1200px;
+}
+
+.nes-container {
+    margin-bottom: 20px;
+}
+
+.nes-container.is-rounded {
+    margin-bottom: 20px;
+}
+
+img {
+    background-color: black;
+}
+
+/* .nes-container>:last-child {
+    margin-top: 15px;
+} */

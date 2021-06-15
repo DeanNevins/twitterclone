@@ -1,0 +1,5 @@
+{% include 'navigation.html' %}
+{% for notification in notifications %}
+    <a href='/tweet/{{notification.tweet.id}}/'>{{ notification.tweet.tweet }}</a>
+    <br>
+{% endfor %}
